@@ -33,6 +33,15 @@ df = pd.DataFrame(datos)
 # Convertir todas las columnas a cadenas de texto (str)
 df = df.applymap(str)
 
-# Mostrar el DataFrame limpio en Streamlit
-st.subheader("DataFrame después del proceso de limpieza:")
-st.dataframe(df)
+# Eliminar filas con valores vacíos en alguna columna
+df_cleaned = df.dropna(subset=df.columns)
+
+# Ocultar valores numéricos
+df_cleaned = df_cleaned.applymap(lambda x: '' if x.isdigit() else x)
+
+# Seleccionar las primeras 10 filas que no tienen datos nulos y limitar a las primeras 7 columnas
+df_filtered = df_cleaned.dropna().iloc[:10, :5]
+
+# Mostrar el DataFrame filtrado en Streamlit
+st.subheader("Primeras 10 filas sin datos nulos y primeras 5 columnas:")
+st.dataframe(df_filtered)
