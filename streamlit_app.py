@@ -17,7 +17,7 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 st.write("Bienvenido a la aplicacion ")
 # Título de la aplicación
-st.title("Análisis de MongoDB")
+st.title("ADA 1 de MongoDB")
 
 # Función para establecer la conexión con MongoDB
 @st.cache(allow_output_mutation=True)
